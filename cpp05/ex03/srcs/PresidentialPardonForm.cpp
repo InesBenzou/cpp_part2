@@ -1,17 +1,17 @@
 #include "../includes/PresidentialPardonForm.hpp"
 #include "../includes/Exceptions.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm("Presidential Pardon", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm() : Form("Presidential Pardon", 25, 5)
 {
 	_target = "Default's target";
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("Presidential Pardon", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : Form("Presidential Pardon", 25, 5)
 {
 	_target = target;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other) : AForm("Presidential Pardon", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other) : Form("Presidential Pardon", 25, 5)
 {
 	_target = other._target;
 }

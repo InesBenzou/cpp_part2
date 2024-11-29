@@ -2,10 +2,10 @@
 #define ROBOTO_MY_REQUEST_HPP
 #include <iostream>
 #include <string>
-#include "AForm.hpp"
+#include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-class RobotomyRequestForm : public AForm
+class RobotomyRequestForm : public Form
 {
 	private :
 		std::string _target;

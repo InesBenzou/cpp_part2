@@ -2,7 +2,7 @@
 #define BUREAUCRAT_HPP
 #include <string>
 #include <iostream>
-#include "AForm.hpp"
+#include "Form.hpp"
 
 class Bureaucrat
 {
@@ -19,8 +19,8 @@ class Bureaucrat
         void decrementGrade();
 		void setGrade(int grade);
         Bureaucrat operator=(const Bureaucrat& other);
-        void signForm (AForm& form); //faire passer une reference de la classe (abstraite direct interdit)
-        void executeForm(AForm const & form) const;
+        void signForm (Form& form); //faire passer une reference de la classe (abstraite direct interdit)
+        void executeForm(Form const & form) const;
 		~Bureaucrat();
 };
 

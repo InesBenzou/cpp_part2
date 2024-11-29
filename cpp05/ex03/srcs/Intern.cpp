@@ -1,4 +1,8 @@
 #include "../includes/Intern.hpp"
+#include "../includes/ShrubberyCreationForm.hpp"
+#include "../includes/RobotomyRequestForm.hpp"
+#include "../includes/PresidentialPardonForm.hpp"
+
 
 Intern::Intern()
 {
@@ -6,38 +10,41 @@ Intern::Intern()
 }
 
 // static functions for makeForm
-static AForm	*makePresident(const std::string target)
+static Form	*makePresident(const std::string target)
 {
 	return (new PresidentialPardonForm(target));
 }
 
-static AForm	*makeRobot(const std::string target)
+static Form	*makeRobot(const std::string target)
 {
 	return (new RobotomyRequestForm(target));
 }
 
-static AForm	*makeShrubbery(const std::string target)
+static Form	*makeShrubbery(const std::string target)
 {
 	return (new ShrubberyCreationForm(target));
 }
 
 
-AForm Intern::makeForm(const std::string formName, const std::string target)
+Form *Intern::makeForm(const std::string formName, const std::string target)
 {
-    AForm *(*all_forms[])(const std::string target) = {&makePresident, &makeRobot,&makeShrubbery };
-    std::string forms[] = {"PresidentialPardonForm", "RobotomyRequestForm", "ShrubberyCreationForm"};
+    Form *(*all_forms[])(const std::string target) = {&makePresident, &makeRobot,&makeShrubbery };
+    std::string forms[] = {"PresidentialPardon", "RobotomyRequest", "ShrubberyCreation"};
 
     for (int i = 0; i < 3; i++)
 	{
-		if (form_to_create == forms[i])
+		if (formName == forms[i])
 		{
-			std::cout << "Intern creates " << form_to_create << " now" << std::endl;
-			return (all_forms[i](target_for_form));
+			std::cout << "Intern creates " << formName << " now" << std::endl;
+			return (all_forms[i](target));
 		}
 	}
 
-	std::cout << "\033[33mIntern can not create a form called " << form_to_create << "\033[0m" << std::endl;
+	std::cout << "\033[33mIntern can not create a form called " << formName << "\033[0m" << std::endl;
 	return (NULL);
 }
 
-Intern::~Intern() {}
+Intern::~Intern()
+{
+	std::cout << "Intern's Destruction" << std::endl;
+}

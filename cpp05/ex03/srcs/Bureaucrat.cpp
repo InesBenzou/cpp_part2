@@ -1,10 +1,10 @@
 #include "../includes/Bureaucrat.hpp"
-#include "../includes/AForm.hpp"
+#include "../includes/Form.hpp"
 #include "../includes/Exceptions.hpp"
 
 Bureaucrat::Bureaucrat()  : _name ("default_name")
 {
-    _grade = 20;
+    _grade = 150;
 	try 
 	{
 		if (_grade < 1)
@@ -96,7 +96,7 @@ void Bureaucrat::decrementGrade()
     }
 }
  
-void Bureaucrat::signForm(AForm& form)
+void Bureaucrat::signForm(Form& form)
 {
 	try
 	{
@@ -118,7 +118,8 @@ std::ostream& operator<<(std::ostream& out, const Bureaucrat& other)
     return out;
 }
 
-void Bureaucrat::executeForm(AForm const &form) const
+
+void Bureaucrat::executeForm(Form const &form) const
 {
 	try
 	{

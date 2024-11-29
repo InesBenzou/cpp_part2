@@ -3,12 +3,12 @@
 #include "../includes/Exceptions.hpp"
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm()  : AForm("Shrubbery Creation",  145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm()  : Form("Shrubbery Creation",  145, 137)
 {
 	_target = "Default's target";
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubbery Creation", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("Shrubbery Creation", 145, 137)
 {
 	_target = target;
 }
@@ -27,17 +27,15 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator =(const ShrubberyCreation
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-	if (!getIsSigned())
-		throw FormNotSignedException();
-	if (executor.getGrade () > getGradeToExecute())
-		throw GradeTooLowException();
-	
 	try 
 	{
+		if (!getIsSigned())
+			throw FormNotSignedException();
+		if (executor.getGrade () > getGradeToExecute())	
+			throw GradeTooLowException();
 		std::ofstream outFile((_target + "_shrubbery").c_str());
-		if (!outFile)
+		if (!outFile.is_open())
 			throw FileCreationException();
-		
 
 		outFile << "        _-_\n";
 		outFile << "	/~~   ~~\\\n";
@@ -48,6 +46,10 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 
 		outFile.close();
 	}
+	catch (const GradeTooLowException& e)
+		{std::cerr << e.what() << std::endl;}
+	catch (const FormNotSignedException& e)
+		{std::cerr << e.what() << std::endl;}
 	catch (const FileCreationException& e)
 		{std::cerr << e.what() << std::endl;}
     catch (const std::exception& e)

@@ -1,50 +1,50 @@
-#include "../includes/AForm.hpp"
+#include "../includes/Form.hpp"
 #include "../includes/Bureaucrat.hpp"
 #include "../includes/Exceptions.hpp"
 
-AForm::AForm() : _name("Form_Name"),  _isSigned(false), _gradeToSign(15), _gradeToExecute(10) {}
+Form::Form() : _name("Form_Name"),  _isSigned(false), _gradeToSign(15), _gradeToExecute(10) {}
 
-AForm::AForm(const AForm& other) :  _name(other._name), _isSigned(false), _gradeToSign(other._gradeToSign), _gradeToExecute(other._gradeToExecute)
+Form::Form(const Form& other) :  _name(other._name), _isSigned(false), _gradeToSign(other._gradeToSign), _gradeToExecute(other._gradeToExecute)
 {
 	_isSigned = other._isSigned;
 }
 
-AForm::AForm(std::string name, int gradeToSign, int gradeToExecute) : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {}
+Form::Form(std::string name, int gradeToSign, int gradeToExecute) : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {}
 
-AForm &AForm::operator=(const AForm& other) 
+Form &Form::operator=(const Form& other) 
 {
 	if (this != &other)
     	_isSigned = other._isSigned;
     return *this;
 }
 
-bool AForm::getIsSigned() const
+bool Form::getIsSigned() const
 {
     return _isSigned;
 }
 
-void AForm::setIsSigned(bool isSigned)
+void Form::setIsSigned(bool isSigned)
 {
 	_isSigned = isSigned;
 }
 
-std::string AForm::getName() const
+std::string Form::getName() const
 {
     return _name;
 }
 
 
-int AForm::getGradeToSign() const
+int Form::getGradeToSign() const
 {
     return _gradeToSign;
 }
 
-int AForm::getGradeToExecute() const
+int Form::getGradeToExecute() const
 {
     return _gradeToExecute;
 }
 
-void AForm::beSigned(Bureaucrat b)
+void Form::beSigned(Bureaucrat b)
 {
     try
     {
@@ -73,7 +73,13 @@ void AForm::beSigned(Bureaucrat b)
     }
 }
 
-std::ostream& operator<<(std::ostream& out, const AForm& form)
+void Form::execute(Bureaucrat const& bureaucrat) const
+{
+        std::cout << "Form executed by " << bureaucrat.getName() << std::endl;
+
+}
+
+std::ostream& operator<<(std::ostream& out, const Form& form)
 {
 	out << "Form Name: " << form.getName() << "\n"
 		<< "Is Signed: " << (form.getIsSigned() ? "Yes" : "No") << "\n"
@@ -82,4 +88,4 @@ std::ostream& operator<<(std::ostream& out, const AForm& form)
 	return out;
 }
 
-AForm::~AForm() {}
+Form::~Form() {}

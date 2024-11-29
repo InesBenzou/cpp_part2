@@ -1,13 +1,14 @@
 NAME 		= ex03
 CC			= c++
-# CFLAGS		= -Wall -Wextra -Werror -std=c++98
-CFLAGS		= -Wall -Wextra -std=c++98
+CFLAGS		= -Wall -Wextra -Werror -std=c++98
+# CFLAGS		= -Wall -Wextra -std=c++98
 SRCS_NAME	=	main.cpp \
 				Bureaucrat.cpp \
-				AForm.cpp \
+				Form.cpp \
 				ShrubberyCreationForm.cpp \
 				PresidentialPardonForm.cpp \
-				RobotomyRequestForm.cpp
+				RobotomyRequestForm.cpp \
+				Intern.cpp
 
 SRCS_DIR 	= ./srcs/
 

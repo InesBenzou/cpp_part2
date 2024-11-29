@@ -3,12 +3,12 @@
 #include <cstdlib> 
 #include <ctime> 
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("Robotomy Request", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm() : Form("Robotomy Request", 72, 45)
 {
 	_target = "Default target";
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("Robotomy Request", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("Robotomy Request", 72, 45)
 {
 	_target = target;
 }
